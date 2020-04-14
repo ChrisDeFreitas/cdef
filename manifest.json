@@ -3,26 +3,50 @@
   "manifest_version": 2,
   "name": "cdef",
   "version": "1.0",
-  "author":"Chris DeFreitas",
-  "email":"chrisd@europa.com",
 
-  "description": "Adds a browser action icon to the toolbar. Click the button to choose a beast. The active tab's body content is then replaced with a picture of the chosen beast. See https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Examples#beastify",
-  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/beastify",
+  "author":"Chris DeFreitas",
+  "description": "Test extension API. options_ui does not work.",
+  "homepage_url": "https://github.com/ChrisDeFreitas/cdef",
+
+  "background": {
+    "scripts":["background/ui.js"]
+  },
+  "browser_action": {
+    "default_area": "navbar",
+    "default_icon": "icons/donut_small-black-18dp.svg",
+    "default_title": "cdef",
+    "default_popup": "window/window.html"
+  },
+  "commands": {
+    "_execute_sidebar_action": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+Y"
+      }
+    }
+  },
   "icons": {
+    "16": "icons/donut_small-black-18dp.svg",
     "48": "icons/donut_small-black-18dp.svg",
     "96": "icons/donut_small-black-18dp.svg"
   },
-
-  "permissions": [
-    "activeTab"
-  ],
-
-  "browser_action": {
-    "default_icon": "icons/donut_small-black-18dp.svg",
-    "default_title": "Beastify",
-    "default_popup": "popup/choose_beast.html"
+  "offline_enabled": false,
+  "options_ui": {
+    "browser_style": true,
+    "chrome_style": true,
+    "page": "options/options.html"
   },
-
+  "permissions": [
+    "activeTab", "storage", "tabs"
+  ],
+  "sidebar_action": {
+    "default_icon": {
+      "16": "button/check_circle_outline-black-18dp.svg",
+      "32": "button/check_circle_outline-black-18dp.svg"
+    },
+    "default_title": "CDeF",
+    "default_panel": "sidebar/panel.html",
+    "open_at_install":true
+  },
   "web_accessible_resources": [
     "beasts/frog.jpg",
     "beasts/turtle.jpg",
