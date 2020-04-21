@@ -14,7 +14,7 @@
     "default_area": "navbar",
     "default_icon": "icons/donut_small-black-18dp.svg",
     "default_title": "cdef",
-    "default_popup": "sidebar/panel.html"
+    "default_popup": "sidebar/sidebar.html"
   },
   "browser_specific_settings": {
     "gecko": {
@@ -38,7 +38,7 @@
   "sidebar_action": {
     "default_icon": "icons/donut_small-black-18dp.svg",
     "default_title" : "cdef",
-    "default_panel": "sidebar/panel.html",
+    "default_panel": "sidebar/sidebar.html",
     "open_at_install":true
   }
 

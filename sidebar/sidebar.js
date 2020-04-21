@@ -1,5 +1,5 @@
 /*
-  panel.js
+  sidebar.js
   - must be loaded via <script> to have access to panel.html DOM
 */
 
@@ -17,28 +17,30 @@ sidebar.ping = function( sender = null ){
 3. get youtube data
 */
 function updateHeader( tab ){
-  console.log('sidebar.updateHeader()', typeof cs)
+  console.log('sidebar.updateHeader()')
 
-  sidebar.title.value = tab.title
-  let url = tab.url
-  if(url.indexOf('https://www.youtube.com') !== 0){
-    url = ''
-  }
-  sidebar.url.value = tab.url
-  //videoDl.ping('sidebar')
 }
 function updateContent() {
   browser.tabs.query({windowId: sidebar.id, active: true})
     .then((tabs) => {
 
-      //test messaginig api
-      // message crosses backbround/page script boundary
+      //test message api across backbround/page script boundary
       browser.runtime.sendMessage({
         sender:'sidebar',
-        type: 'ui.ping',
-        url: tabs[0].url 
+        to: 'ui',
+        type: 'ping',
+        data:' sent from sidebar'
       });
 
+      sidebar.title.value = tabs[0].title
+      let url = tabs[0].url
+      if(url.indexOf('https://www.youtube.com') !== 0){
+        url = ''
+      }
+      sidebar.url.value = url
+      //not accessible:
+      //  videoDl.ping('sidebar')
+    
       //return browser.storage.local.get(tabs[0].url);
       updateHeader( tabs[0] )
     })
@@ -74,18 +76,18 @@ browser.tabs.onUpdated.addListener(updateContent);
 
 //init
 browser.runtime.onMessage.addListener( function( message ){
-  if(message.handler)
-  return
+  if(message.handler || message.to !== 'panel')
+    return
 
   switch (message.type) {
-    case 'sidebar.ping': 
-      message.handler = 'ui'
-      console.log(`sidebar.ping message from `, message.sender)
+    case 'ping': 
+      message.handler = 'sidebar'
+      console.log(`sidebar.ping from `, message.sender, ': ', message.data)
       break
   }
 
   if(message.handler){
-    message.handled = new Date.toLocaleString()
+    // message.handled = ui.calc.timeStamp()
   }
 
 })

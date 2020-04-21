@@ -7,11 +7,33 @@
     
 
   # Notes
-  - page scripts DOM not accessible from background scripts
-  
   - background scripts can not access page script DOM
+  - page scripts can not access background script DOM
 
-  - messaging between background and page scripts to exchange data
-  -- see browser.runtime.onMessage.addListener
-  -- see browser.runtime.sendMessage
+  - two way messaging with background and page scripts  
+  -- see browser.runtime.onMessage.addListener  
+  -- see browser.runtime.sendMessage  
+
+  - create an object to manage the messaging  
+  -- will also handle state  
+
+  code:
+var mq = class{
+
+  init:function(options){}
+
+  store:function(options = {
+    from:'',
+    to:'',
+    type:'',
+
+    data:'',
+    
+    _handler:'mq = default',
+    _handled:'timestamp',
+  }){
+
+  }
+}
+  end
   
