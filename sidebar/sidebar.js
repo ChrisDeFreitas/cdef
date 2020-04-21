@@ -43,12 +43,30 @@ function updateContent() {
     // });
 }
 
+//test calling background message handler
+sidebar.btnReloadClick= function(event){
+  console.log('sidebar.btnReloadClick()', event)
+
+  browser.runtime.sendMessage({
+    sender:'sidebar.btnReloadClick',
+    to: 'ui',
+    type: 'ping',
+    data:' sent from sidebar.btnReloadClick()'
+  });
+}
+
 //sidebar.init = function(){
 browser.windows.getCurrent({populate: true}).then((windowInfo) => {
   //get the ID of its window
   sidebar.id = windowInfo.id;
   sidebar.title = document.querySelector("#fld-title")
   sidebar.url = document.querySelector("#fld-url")
+
+  //test calling background message handler
+  let btn = document.querySelector('#btnReload')
+  btn.addEventListener('click', function(event){
+    sidebar.btnReloadClick(event) 
+  })
 
   //test basic message passing  
   browser.runtime.onMessage.addListener( function( message ){
@@ -81,12 +99,6 @@ browser.windows.getCurrent({populate: true}).then((windowInfo) => {
   // //update content when the sidebar loads
   updateContent();
 
-
-
-
   console.log('sidebar initted.')
 })
-
-
-
 console.log(`sidebar.init`)

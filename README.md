@@ -11,16 +11,20 @@ Notes
   - background scripts cannot access page script DOM
   - page scripts cannot access background script DOM
 
-  - two way messaging with background and page scripts  
-  -- test code in: ui.js, sidebar.js, under "//test basic message passing"  
-  -- see references:  
+  - messaging between background and page scripts  
+  -- test: //test basic message passing
+  -- src: ui.js, sidebar.js
+  -- references:  
   --- browser.runtime.onMessage.addListener  
   --- browser.runtime.sendMessage  
   
-
   - create an object to manage the messaging  
-  -- CMessageQue.js
-  -- implemented in ui.init()
+  -- test: //test CMessageQue
+  -- src: CMessageQue.js,  ui.init()
+
+  - test: //test calling background message handler
+  - src: sidebar.js, ui.js
+
 
 ```
   
