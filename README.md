@@ -8,8 +8,8 @@ Test FF extension development
 
 Notes
 ===
-  - background scripts can not access page script DOM
-  - page scripts can not access background script DOM
+  - background scripts cannot access page script DOM
+  - page scripts cannot access background script DOM
 
   - two way messaging with background and page scripts  
   -- test code in: ui.js, sidebar.js, under "//test basic message passing"  
@@ -19,7 +19,8 @@ Notes
   
 
   - create an object to manage the messaging  
-  -- will also handle state  
+  -- CMessageQue.js
+  -- implemented in ui.init()
 
 ```
   

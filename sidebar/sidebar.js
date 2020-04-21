@@ -67,22 +67,21 @@ browser.windows.getCurrent({populate: true}).then((windowInfo) => {
     }
 
   })
-
-  //Update content when a new tab becomes active.
-  browser.tabs.onActivated.addListener(updateContent);
-  //Update content when a new page is loaded into a tab.
-  browser.tabs.onUpdated.addListener(updateContent);
-
-  //update content when the sidebar loads
-  updateContent();
-
-  //test basic message passing  
   browser.runtime.sendMessage({
     sender:'sidebar',
     to: 'ui',
     type: 'ping',
     data:' sent from sidebar'
   });
+  
+  // //Update content when a new tab becomes active.
+  // browser.tabs.onActivated.addListener(updateContent);
+  // //Update content when a new page is loaded into a tab.
+  // browser.tabs.onUpdated.addListener(updateContent);
+  // //update content when the sidebar loads
+  updateContent();
+
+
 
 
   console.log('sidebar initted.')
