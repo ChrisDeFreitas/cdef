@@ -6,8 +6,7 @@
   https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_second_WebExtension
     
 
-  Notes
-  ==
+  # Notes
   - page scripts DOM not accessible from background scripts
   
   - background scripts can not access page script DOM
