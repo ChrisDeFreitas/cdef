@@ -2,8 +2,8 @@
  Test FF extension development
 
 
-- currently modfyin code from to test extension functionality:
-  https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_second_WebExtension
+- currently modfying code from to test extension functionality:
+  https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_second_WebExtension  
     
 
   # Notes
