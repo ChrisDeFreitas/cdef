@@ -17,7 +17,7 @@
   - create an object to manage the messaging  
   -- will also handle state  
 
-  code:
+```javascript
 var mq = class{
 
   init:function(options){}
@@ -35,5 +35,5 @@ var mq = class{
 
   }
 }
-  end
+```
   
