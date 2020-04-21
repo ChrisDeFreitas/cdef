@@ -43,7 +43,7 @@ function updateContent() {
     // });
 }
 
-//  init
+//sidebar.init = function(){
 browser.windows.getCurrent({populate: true}).then((windowInfo) => {
   //get the ID of its window
   sidebar.id = windowInfo.id;
@@ -73,7 +73,7 @@ browser.windows.getCurrent({populate: true}).then((windowInfo) => {
     type: 'ping',
     data:' sent from sidebar'
   });
-  
+
   // //Update content when a new tab becomes active.
   // browser.tabs.onActivated.addListener(updateContent);
   // //Update content when a new page is loaded into a tab.
@@ -85,7 +85,7 @@ browser.windows.getCurrent({populate: true}).then((windowInfo) => {
 
 
   console.log('sidebar initted.')
-});
+})
 
 
 
