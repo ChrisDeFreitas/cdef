@@ -7,7 +7,7 @@
     
 
   Notes
-  ===
+  ==
   - page scripts DOM not accessible from background scripts
   
   - background scripts can not access page script DOM
