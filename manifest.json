@@ -2,26 +2,31 @@
 
   "manifest_version": 2,
   "name": "cdef",
+  "description": "Displays a sidebar that lets you take notes on web pages.",
   "version": "1.0",
 
-  "author":"Chris DeFreitas",
-  "description": "Test extension API. options_ui does not work.",
-  "homepage_url": "https://github.com/ChrisDeFreitas/cdef",
 
   "background": {
-    "scripts":["background/ui.js"]
+    "scripts":["lib/videoDl.js","lib/ui.js"]
   },
+
   "browser_action": {
     "default_area": "navbar",
     "default_icon": "icons/donut_small-black-18dp.svg",
     "default_title": "cdef",
-    "default_popup": "window/window.html"
+    "default_popup": "sidebar/panel.html"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "cdef@example.com",
+      "strict_min_version": "54.0a1"
+    }
   },
   "commands": {
     "_execute_sidebar_action": {
-      "suggested_key": {
-        "default": "Ctrl+Alt+Y"
-      }
+        "suggested_key": {
+          "default": "Ctrl+Shift+C"
+        }
     }
   },
   "icons": {
@@ -29,28 +34,12 @@
     "48": "icons/donut_small-black-18dp.svg",
     "96": "icons/donut_small-black-18dp.svg"
   },
-  "offline_enabled": false,
-  "options_ui": {
-    "browser_style": true,
-    "chrome_style": true,
-    "page": "options/options.html"
-  },
-  "permissions": [
-    "activeTab", "storage", "tabs"
-  ],
+  "permissions": ["downloads","storage", "tabs"],
   "sidebar_action": {
-    "default_icon": {
-      "16": "button/check_circle_outline-black-18dp.svg",
-      "32": "button/check_circle_outline-black-18dp.svg"
-    },
-    "default_title": "CDeF",
+    "default_icon": "icons/donut_small-black-18dp.svg",
+    "default_title" : "cdef",
     "default_panel": "sidebar/panel.html",
     "open_at_install":true
-  },
-  "web_accessible_resources": [
-    "beasts/frog.jpg",
-    "beasts/turtle.jpg",
-    "beasts/snake.jpg"
-  ]
+  }
 
 }

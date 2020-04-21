@@ -7,7 +7,20 @@
   </head>
 
 <body>
-  <div id = "content"></div>
+  <div id = "frame">
+    <div id=heading>
+      <label>Title <input id="fld-title" type=text value='Test'> </label>
+      <label>URL <input id=fld-url type=text title='Yuotube Video to download' value='test'></label>
+      <label id=btnTray>
+      	<button id=btnDownload title='Begin download'>Download</button>
+      	<button id=btnReload title='Reload data'>Reload</button>
+      </label>
+    </div>
+    <div id=content>
+    </div>
+   </div>
+
+  <!--div id = "content"></div-->
   <p>Click inside the box to start taking notes on this page.</p>
   <script src="panel.js"></script>
 </body>
