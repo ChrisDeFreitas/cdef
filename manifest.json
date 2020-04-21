@@ -7,7 +7,7 @@
 
 
   "background": {
-    "scripts":["lib/videoDl.js","lib/ui.js"]
+    "scripts":["lib/videoDl.js","lib/CMessageQue.js","lib/ui.js"]
   },
 
   "browser_action": {
