@@ -11,8 +11,11 @@
   - page scripts can not access background script DOM
 
   - two way messaging with background and page scripts  
-  -- see browser.runtime.onMessage.addListener  
-  -- see browser.runtime.sendMessage  
+  -- see references:  
+  --- browser.runtime.onMessage.addListener  
+  --- browser.runtime.sendMessage  
+  -- test code in: ui.js, sidebar.js, under "//test basic message passing"  
+
 
   - create an object to manage the messaging  
   -- will also handle state  

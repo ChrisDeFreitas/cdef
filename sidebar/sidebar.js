@@ -1,6 +1,8 @@
 /*
   sidebar.js
-  - must be loaded via <script> to have access to panel.html DOM
+  - must be loaded via <script> to have access to sidebar's DOM
+
+  - content specific to test cases
 */
 
 var sidebar = {
@@ -24,14 +26,6 @@ function updateContent() {
   browser.tabs.query({windowId: sidebar.id, active: true})
     .then((tabs) => {
 
-      //test message api across backbround/page script boundary
-      browser.runtime.sendMessage({
-        sender:'sidebar',
-        to: 'ui',
-        type: 'ping',
-        data:' sent from sidebar'
-      });
-
       sidebar.title.value = tabs[0].title
       let url = tabs[0].url
       if(url.indexOf('https://www.youtube.com') !== 0){
@@ -49,45 +43,51 @@ function updateContent() {
     // });
 }
 
-/*
-update content when the sidebar loads, get the ID of its window,
-*/
+//  init
 browser.windows.getCurrent({populate: true}).then((windowInfo) => {
-
-  //init
+  //get the ID of its window
   sidebar.id = windowInfo.id;
   sidebar.title = document.querySelector("#fld-title")
   sidebar.url = document.querySelector("#fld-url")
 
+  //test basic message passing  
+  browser.runtime.onMessage.addListener( function( message ){
+    if(message.handler || message.to !== 'sidebar')
+      return
+
+    switch (message.type) {
+      case 'ping': 
+        message.handler = 'sidebar'
+        console.log(`sidebar.ping from `, message.sender, ': ', message.data)
+        break
+    }
+
+    if(message.handler){
+      // message.handled = ui.calc.timeStamp()
+    }
+
+  })
+
+  //Update content when a new tab becomes active.
+  browser.tabs.onActivated.addListener(updateContent);
+  //Update content when a new page is loaded into a tab.
+  browser.tabs.onUpdated.addListener(updateContent);
+
+  //update content when the sidebar loads
   updateContent();
+
+  //test basic message passing  
+  browser.runtime.sendMessage({
+    sender:'sidebar',
+    to: 'ui',
+    type: 'ping',
+    data:' sent from sidebar'
+  });
+
+
   console.log('sidebar initted.')
 });
 
 
-/*
-Update content when a new tab becomes active.
-*/
-browser.tabs.onActivated.addListener(updateContent);
 
-/*
-Update content when a new page is loaded into a tab.
-*/
-browser.tabs.onUpdated.addListener(updateContent);
-
-//init
-browser.runtime.onMessage.addListener( function( message ){
-  if(message.handler || message.to !== 'panel')
-    return
-
-  switch (message.type) {
-    case 'ping': 
-      message.handler = 'sidebar'
-      console.log(`sidebar.ping from `, message.sender, ': ', message.data)
-      break
-  }
-
-  if(message.handler){
-    // message.handled = ui.calc.timeStamp()
-  }
-
-})
+console.log(`sidebar.init`)
