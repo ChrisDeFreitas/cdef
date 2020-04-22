@@ -5,7 +5,7 @@ Test FF extension development
 - currently modfying code from:  
   https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_second_WebExtension  
     
-Questipons
+Questions
 ===
 - how to import a module?
 
