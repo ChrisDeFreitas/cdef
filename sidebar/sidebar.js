@@ -62,8 +62,21 @@ browser.windows.getCurrent({populate: true}).then((windowInfo) => {
   sidebar.title = document.querySelector("#fld-title")
   sidebar.url = document.querySelector("#fld-url")
 
+  //test calling native app
+  let btn = document.querySelector('#btnDownload')
+  btn.addEventListener('click', function(event){
+    console.log('sidebar.btnDownload()', event)
+
+    browser.runtime.sendMessage({
+      sender:'sidebar.btnDownload',
+      to: 'ui',
+      type: 'nativeApp',
+      data:' sent from sidebar.btnDownload()'
+    });
+  })
+
   //test calling background message handler
-  let btn = document.querySelector('#btnReload')
+  btn = document.querySelector('#btnReload')
   btn.addEventListener('click', function(event){
     sidebar.btnReloadClick(event) 
   })

@@ -33,9 +33,16 @@ Notes
   - note: modules must be compatible with browser js version
   - note: technique may work with sidebar (a page script)
 
+  - test: //test calling native app
+  - src: sidebar.js, ui.js
+  - works for .exe file, but requires this registry setting:
+    HKEY_LOCAL_MACHINE\SOFTWARE\Mozilla\NativeMessagingHosts\MathQuestions
+    = C:\Users\chris\Code\FF Ext\cdef\native\MathQuestions.json
+
 Links   
 ===
 https://medium.com/front-end-weekly/es6-modules-in-chrome-extensions-an-introduction-313b3fce955b
+https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Native_manifests#Manifest_location
 
 ```
   

@@ -1,0 +1,7 @@
+{
+    "name": "MathQuestions",
+    "description": "Example host for native messaging",
+    "path": "./MathQuestions.exe",
+    "type": "stdio",
+    "allowed_extensions": [ "cdef@example.com" ]
+  }
