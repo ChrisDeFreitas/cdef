@@ -5,6 +5,9 @@ Test FF extension development
 - currently modfying code from:  
   https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_second_WebExtension  
     
+Questipons
+===
+- how to import a module?
 
 Notes
 ===
@@ -25,6 +28,14 @@ Notes
   - test: //test calling background message handler
   - src: sidebar.js, ui.js
 
+  - test: access js modules from background script
+  - src: ./background/*, lib/module.js  
+  - note: modules must be compatible with browser js version
+  - note: technique may work with sidebar (a page script)
+
+Links   
+===
+https://medium.com/front-end-weekly/es6-modules-in-chrome-extensions-an-introduction-313b3fce955b
 
 ```
   

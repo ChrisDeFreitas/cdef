@@ -101,4 +101,9 @@ browser.windows.getCurrent({populate: true}).then((windowInfo) => {
 
   console.log('sidebar initted.')
 })
+
+
+//fails:
+//import { getUsefulContents } from '../lib/module.js';
+
 console.log(`sidebar.init`)

@@ -7,9 +7,10 @@
 
 
   "background": {
-    "scripts":["lib/videoDl.js","lib/CMessageQue.js","lib/ui.js"]
+    "page": "background/background.html",
+    "persistent": true
   },
-
+  
   "browser_action": {
     "default_area": "navbar",
     "default_icon": "icons/donut_small-black-18dp.svg",
@@ -34,12 +35,12 @@
     "48": "icons/donut_small-black-18dp.svg",
     "96": "icons/donut_small-black-18dp.svg"
   },
-  "permissions": ["downloads","storage", "tabs"],
+  "permissions": ["downloads","nativeMessaging","storage","tabs"],
   "sidebar_action": {
     "default_icon": "icons/donut_small-black-18dp.svg",
     "default_title" : "cdef",
     "default_panel": "sidebar/sidebar.html",
     "open_at_install":true
   }
-
+  
 }
