@@ -1,0 +1,7 @@
+{
+    "name": "nativeBat",
+    "description": "Example host for native messaging",
+    "path": "./nativeBat.bat",
+    "type": "stdio",
+    "allowed_extensions": [ "cdef@example.com" ]
+  }

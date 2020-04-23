@@ -2,12 +2,15 @@
 ===
 Test FF extension development
 ===
-- currently modfying code from:  
+- based on code from:  
   https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_second_WebExtension  
     
-Questions
+
+Issues
 ===
-- how to import a module?
+- currently working on native application solutions
+- repository contains MathQuetions.exe for testing native applications.  This is an old Delphi application I created for my daughter when she was 7.  The source code is included.
+
 
 Notes
 ===

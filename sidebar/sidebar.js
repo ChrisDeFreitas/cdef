@@ -62,16 +62,29 @@ browser.windows.getCurrent({populate: true}).then((windowInfo) => {
   sidebar.title = document.querySelector("#fld-title")
   sidebar.url = document.querySelector("#fld-url")
 
-  //test calling native app
-  let btn = document.querySelector('#btnDownload')
+  //test calling native batch file
+  let btn = document.querySelector('#btNativeBat')
   btn.addEventListener('click', function(event){
-    console.log('sidebar.btnDownload()', event)
+    console.log('sidebar.btNativeBat()', event)
 
     browser.runtime.sendMessage({
-      sender:'sidebar.btnDownload',
+      sender:'sidebar.btNativeBat',
+      to: 'ui',
+      type: 'nativeBat',
+      data:' sent from sidebar.btNativeBat()'
+    });
+  })
+
+  //test calling native app
+  btn = document.querySelector('#btNativeApp')
+  btn.addEventListener('click', function(event){
+    console.log('sidebar.btNativeApp()', event)
+
+    browser.runtime.sendMessage({
+      sender:'sidebar.btNativeApp',
       to: 'ui',
       type: 'nativeApp',
-      data:' sent from sidebar.btnDownload()'
+      data:' sent from sidebar.btNativeApp()'
     });
   })
 
