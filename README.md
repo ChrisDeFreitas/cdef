@@ -16,25 +16,25 @@ Notes
   - page scripts cannot access background script DOM
 
   - messaging between background and page scripts  
-  -- test: //test basic message passing
-  -- src: ui.js, sidebar.js
+  -- test: //test basic message passing  
+  -- src: ui.js, sidebar.js  
   -- references:  
   --- browser.runtime.onMessage.addListener  
   --- browser.runtime.sendMessage  
   
-  - create an object to manage the messaging  
-  -- test: //test CMessageQue
-  -- src: CMessageQue.js,  ui.init()
+  - create an object to manage the messaging   
+  -- test: //test CMessageQue  
+  -- src: CMessageQue.js,  ui.init()  
 
-  - test: //test calling background message handler
-  -- src: sidebar.js, ui.js
+  - test: //test calling background message handler  
+  -- src: sidebar.js, ui.js  
 
-  - test: access js modules from background script
+  - test: access js modules from background script  
   -- src: ./background/*, lib/module.js  
-  -- note: modules must be compatible with browser js version
-  -- note: technique may work with sidebar (a page script)
+  -- note: modules must be compatible with browser js version  
+  -- note: technique may work with sidebar (a page script)  
 
-  - test: //test calling native app
+  - test: //test calling native app  
   -- src: ./native/*, sidebar.js, ui.js  
   -- tests use Connection-based and Connectionless messaging  
   -- Connection-based messaging fails if app writes non-json to stdout  
