@@ -43,6 +43,8 @@ Notes
   ```
     HKEY_LOCAL_MACHINE\SOFTWARE\Mozilla\NativeMessagingHosts\MathQuestions  
       = C:\Users\chris\Code\FF Ext\cdef\native\MathQuestions.json  
+```
+```
     HKEY_LOCAL_MACHINE\SOFTWARE\Mozilla\NativeMessagingHosts\nativeBat  
       = C:\Users\chris\Code\FF Ext\cdef\native\nativeBat.json  
 ```
