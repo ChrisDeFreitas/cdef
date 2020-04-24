@@ -1,14 +1,10 @@
-cls
 @echo off
-echo    nativeBat.bat
-echo    - test calling batch file from browser extensions
-echo.
+rem 
+rem nativeBat.bat
+rem 
+rem any console output is interpreted as a json message, 
+rem therefore browser errors occur if non-json written to stdout
 
-rem "C:\Program Files\IDM Computer Solutions\UltraEdit\uedit64.exe"
-rem .\MathQuestions.exe
-node.exe ./apptest.js
-
-echo.
-echo    Done.
-
-EXIT 0
+rem ./MathQuestions.exe
+rem node.exe ./apptest.js
+"C:/electron/Electron-FolderView/dist/FolderView-win32-x64/FolderView.exe" > ./FolderView.out.txt
