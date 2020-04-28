@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="browser_action.css"/>
+
+<!-- fails: script type="module">
+  import { myFunction } from '../lib/module.js'
+  console.log('myFunction', myFunction) 
+</script-->
+
+</head>
+
+<body>
+  <div id = "frame">
+
+    <div id=heading>
+      <label>Title <input id="fld-title" type=text value='Test'> </label>
+      <label>URL <input id=fld-url type=text title='Yuotube Video to download' value='test'></label>
+      <label id=btnTray>
+      	<button id=btNativeApp title='test calling native app'>native .exe</button>
+      	<button id=btNativeBat title='test calling native batch file'>native .bat</button>
+      	<button id=btnPing title='Call ui.ping event '>Ping</button>
+      </label>
+    </div>
+
+    <div id=content>
+    </div>
+
+    <div id=footer>
+      <button id=btnClose>Close</button>
+    </div>
+  </div>
+
+
+  <script src="browser_action.js"></script>
+  <!--script type="module" src="../lib/module.js"></script-->
+</body>
+
+</html>

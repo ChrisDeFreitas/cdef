@@ -6,7 +6,9 @@
 */
 
 var sidebar = {
-  id:null
+  id:null,
+  title:null,
+  url:null
 }
 sidebar.ping = function( sender = null ){
   console.log('sidebar.ping() from:', sender)

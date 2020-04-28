@@ -1,0 +1,32 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: caption;
+  background-color: #F4F7F8;
+}
+
+#content {
+  height: auto;
+  margin: 0.5em 0.25em 0 0.25em;
+}
+
+#frame{ font-size:14px; padding:1em; }
+#frame #heading{}
+#frame #heading, #frame #content{}
+
+#frame #heading label { display:inline-table; }
+#frame #heading label input{ background:transparent; border:1px solid silver; display:inline-table; }
+#frame #heading #btnTray { display:relative; font-size:0.8em; right:5px; margin:0.5em 0; width:100%; text-align:right; }
+#frame #heading #btnTray button { border:1px solid silver; border-radius:0.25em; font-size:1em; float:right; margin:0 0.5em 0 0; padding:0.25em 0.5em; }
+
+#frame #content{ font-size:0.8em; }
+#frame #content label { display:inlne-table; }
+#frame #content label input{ display:inline-table; }
+#frame #content label input[type=radio]{ color:red; }
+
+#frame #footer{ text-align:center; }

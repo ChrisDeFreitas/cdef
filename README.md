@@ -36,9 +36,10 @@ Notes
 
   - test: //test calling native app  
   -- src: ./native/*, sidebar.js, ui.js  
+  -- ref: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Native_messaging  
   -- tests use Connection-based and Connectionless messaging  
-  -- Connection-based messaging fails if app writes non-json to stdout  
-  -- any data written to stdout by native apps is interpreted as JSON and generates extension error messages if not well formed  
+  -- any data written to stdout by native apps is interpreted as JSON and generates extension error messages if not well formed
+  -- apptest3.js successfully implements (simple) bi-directional communication between a native nodejs app and the browser extension
   -- requires registry settings:  
   ```
     HKEY_LOCAL_MACHINE\SOFTWARE\Mozilla\NativeMessagingHosts\MathQuestions  
