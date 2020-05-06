@@ -22,8 +22,8 @@ Notes
   - page scripts cannot access background script DOM
 
   - test: //socket.io native app communications  
-  - src: ./browser_action/*, ./native/socket.io/*  
-  - uses socket.io on both ends of the connection  
+  -- src: ./browser_action/*, ./native/socket.io/*  
+  -- uses socket.io on both ends of the connection  
 
   - messaging between background and page scripts  
   -- test: //test basic message passing  
