@@ -36,7 +36,7 @@ function updateContent() {
       browser_action.url.value = url
       //not accessible:
       //  videoDl.ping('browser_action')
-    
+
       //return browser.storage.local.get(tabs[0].url);
       updateHeader( tabs[0] )
     })
@@ -67,12 +67,31 @@ browser.windows.getCurrent({populate: true})
     });
   })
 
+  //socket.io native app communications  
+  document.querySelector('#btnSocket').addEventListener('click', function(event){
+    console.log('browser_action.btnSocketClick()', event)
+
+    var socket = io('ws://127.0.0.1:8124')
+    socket.on('connect', function(){
+      console.log('socket connect')
+    })
+    socket.on('event', function(data){
+      console.log('socket event:', data)
+      socket.disconnect()
+    })
+    socket.on('disconnect', function(){
+      console.log('socket disconnect')
+    })
+    socket.emit('event', 'Hello')
+  })
+
   //test calling native batch file
   let btn = document.querySelector('#btNativeBat')
   btn.addEventListener('click', function(event){
     console.log('browser_action.btnNativeBat() test', event)
 
     //Connection-based messaging
+    //  must be called from background script  (such as background.js) for native app to stay on screen
     port = browser.runtime.connectNative( "nativeBat" )
     port.onMessage.addListener((response) => {
         console.log("port received: ", response)
@@ -102,13 +121,13 @@ browser.windows.getCurrent({populate: true})
     });
   })
 
-  //test basic message passing  
+  //test basic message passing
   browser.runtime.onMessage.addListener( function( message ){
     if(message.handler || message.to !== 'browser_action')
       return
 
     switch (message.type) {
-      case 'ping': 
+      case 'ping':
         message.handler = 'browser_action'
         console.log(`browser_action.ping from `, message.sender, ': ', message.data)
         break

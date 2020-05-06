@@ -1,7 +1,7 @@
 {
     "name": "MathQuestions",
     "description": "Example host for native messaging",
-    "path": "C:/electron/Electron-FolderView/dist/FolderView-win32-x64/FolderView.exe",
+    "path": "./MathQuestions.exe",
     "type": "stdio",
     "allowed_extensions": [ "cdef@example.com" ]
   }

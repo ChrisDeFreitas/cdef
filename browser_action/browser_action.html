@@ -20,7 +20,9 @@
       <label id=btnTray>
       	<button id=btNativeApp title='test calling native app'>native .exe</button>
       	<button id=btNativeBat title='test calling native batch file'>native .bat</button>
-      	<button id=btnPing title='Call ui.ping event '>Ping</button>
+        <button id=btnPing title='Call ui.ping event '>Ping</button>
+        <button id=btnSocket title='Test socket.io connection to native app.'>Socket.io</button>
+
       </label>
     </div>
 
@@ -33,6 +35,7 @@
   </div>
 
 
+  <script src="socketio_client/socket.io.js"></script>
   <script src="browser_action.js"></script>
   <!--script type="module" src="../lib/module.js"></script-->
 </body>

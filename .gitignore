@@ -1,0 +1,4 @@
+#repository ignore files:
+.gitconfig
+node_modules/
+

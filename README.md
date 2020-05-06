@@ -6,7 +6,13 @@ Test Browser Extension Development
 
 Issues
 ---
-- currently working on native application solutions in Windows  
+- currently working on messaging between extension and native app using socket.io  
+- repository contains a simple socket.io server that must be installed and executed to perform the test:  
+```
+  > cd ./native/socket.io  
+  > npm install  
+  > node server.js  
+```
 - repository contains MathQuestions.exe for testing native applications.  This is an old Delphi application I created for my daughter when she was 7.  The source code is included.
 
 
@@ -14,6 +20,10 @@ Notes
 ---
   - background scripts cannot access page script DOM
   - page scripts cannot access background script DOM
+
+  - test: //socket.io native app communications  
+  - src: ./browser_action/*, ./native/socket.io/*  
+  - uses socket.io on both ends of the connection  
 
   - messaging between background and page scripts  
   -- test: //test basic message passing  
@@ -38,8 +48,8 @@ Notes
   -- src: ./native/*, sidebar.js, ui.js  
   -- ref: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Native_messaging  
   -- tests use Connection-based and Connectionless messaging  
-  -- any data written to stdout by native apps is interpreted as JSON and generates extension error messages if not well formed
-  -- apptest3.js successfully implements (simple) bi-directional communication between a native nodejs app and the browser extension
+  -- any data written to stdout by native apps is interpreted as JSON and generates extension error messages if not well formed  
+  -- apptest3.js successfully implements (simple) bi-directional communication between a native nodejs app and the browser extension  
   -- requires registry settings:  
   ```
     HKEY_LOCAL_MACHINE\SOFTWARE\Mozilla\NativeMessagingHosts\MathQuestions  
@@ -52,7 +62,7 @@ Notes
 
 Registry editing commands
 ---
-- commands must be run from Admin console
+- commands must be run from Windows' Admin console
 
 - view subkeys:
 ```
@@ -76,5 +86,5 @@ Registry editing commands
 
 Links   
 ---
-  https://medium.com/front-end-weekly/   es6-modules-in-chrome-extensions-an-introduction-313b3fce955b  
-  https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/  Native_manifests#Manifest_location  
+  https://medium.com/front-end-weekly/es6-modules-in-chrome-extensions-an-introduction-313b3fce955b  
+  https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Native_manifests  
