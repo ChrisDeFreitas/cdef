@@ -36,7 +36,7 @@ function updateContent() {
       sidebar.url.value = url
       //not accessible:
       //  videoDl.ping('sidebar')
-    
+
       //return browser.storage.local.get(tabs[0].url);
       updateHeader( tabs[0] )
     })
@@ -58,11 +58,47 @@ sidebar.btnReloadClick= function(event){
 }
 
 //sidebar.init = function(){
-browser.windows.getCurrent({populate: true}).then((windowInfo) => {
+//browser.windows.getCurrent({populate: true}).then((windowInfo) => {
+window.addEventListener('DOMContentLoaded', (event) => {
+
   //get the ID of its window
-  sidebar.id = windowInfo.id;
+  //sidebar.id = windowInfo.id;
   sidebar.title = document.querySelector("#fld-title")
   sidebar.url = document.querySelector("#fld-url")
+
+  browser.commands.onCommand.addListener(function (command) {
+    if (command === "toggle-feature") {
+      console.log("Toggle sidebar visibility");
+    	browser.sidebarAction.toggle()
+    }
+  });
+
+  //ping tests
+  document.querySelector('#btnPingBackground').addEventListener('click', function(event){
+      console.log('sidebar.btnPingBackground()', event)
+      browser.runtime.sendMessage({
+        sender:'sidebar.btnPingBackground',
+        to: 'background',
+        type: 'ping'
+      });
+  })
+  document.querySelector('#btnPingSidebar').addEventListener('click', function(event){ 
+    //cannot message self; must call sidebar.ping via background.sidebar-ping
+    console.log('sidebar.btnPingSidebar()', event)
+    browser.runtime.sendMessage({
+      sender:'sidebar.btnPingSidebar',
+      to: 'background',
+      type: 'sidebar-ping'
+    });
+  })
+  //connection-based messaging with content script
+  document.querySelector('#btnPingContent').addEventListener('click', async function(event){
+    console.log('sidebar.btnPingContent()')
+    //works 
+    portFromCS.postMessage({ greeting:"Ping from sidebar" });
+  })
+  
+
 
   //test calling native batch file
   let btn = document.querySelector('#btNativeBat')
@@ -93,18 +129,24 @@ browser.windows.getCurrent({populate: true}).then((windowInfo) => {
   //test calling background message handler
   btn = document.querySelector('#btnReload')
   btn.addEventListener('click', function(event){
-    sidebar.btnReloadClick(event) 
+    sidebar.btnReloadClick(event)
   })
 
-  //test basic message passing  
+  //test basic message passing
   browser.runtime.onMessage.addListener( function( message ){
     if(message.handler || message.to !== 'sidebar')
       return
 
     switch (message.type) {
-      case 'ping': 
+      case 'ping':
         message.handler = 'sidebar'
-        console.log(`sidebar.ping from `, message.sender, ': ', message.data)
+        console.log(`sidebar.ping called from `, message.sender)
+        browser.notifications.create({
+          "type": "basic",
+          "iconUrl": browser.extension.getURL("link.png"),
+          "title": "sidebar.js "+message.type,
+          "message": 'from: '+message.sender
+        });  
         break
     }
 
@@ -113,6 +155,7 @@ browser.windows.getCurrent({populate: true}).then((windowInfo) => {
     }
 
   })
+
   browser.runtime.sendMessage({
     sender:'sidebar',
     to: 'ui',
@@ -133,5 +176,14 @@ browser.windows.getCurrent({populate: true}).then((windowInfo) => {
 
 //fails:
 //import { getUsefulContents } from '../lib/module.js';
+
+
+//connection-based messaging with content script
+var portFromCS;
+function connected(p) {
+  console.log('sidebar connected', p)
+  portFromCS = p;
+}
+browser.runtime.onConnect.addListener(connected);
 
 console.log(`sidebar.init`)

@@ -8,7 +8,7 @@
     "page": "background/background.html",
     "persistent": true
   },
-  
+
   "browser_action": {
     "default_area": "navbar",
     "default_icon": "icons/donut_small-black-18dp.svg",
@@ -22,22 +22,28 @@
     }
   },
   "commands": {
-    "_execute_sidebar_action": {
+    "toggle-feature": {
         "suggested_key": {
           "default": "Ctrl+Shift+C"
-        }
+        },
+    "description": "Toggle FolderView sidebar."
     }
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["lib/content.js"]
+    }
+  ],
   "icons": {
-    "16": "icons/donut_small-black-18dp.svg",
     "48": "icons/donut_small-black-18dp.svg",
     "96": "icons/donut_small-black-18dp.svg"
   },
-  "permissions": ["downloads","nativeMessaging","storage","tabs"],
+  "permissions": ["downloads","nativeMessaging","notifications","storage","tabs"],
   "sidebar_action": {
     "default_icon": "icons/donut_small-black-18dp.svg",
     "default_title" : "cdef",
-    "default_panel": "browser_action/browser_action.html",
+    "default_panel": "sidebar/sidebar.html",
     "open_at_install":true
   }
 }

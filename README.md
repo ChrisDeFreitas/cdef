@@ -6,8 +6,8 @@ Test Browser Extension Development
 
 Issues
 ---
-- currently working on messaging between extension and native app using socket.io  
-- repository contains a simple socket.io server that must be installed and executed to perform the test:  
+- currently working on messaging between content script and sidebar
+- repository contains a simple socket.io server that must be installed and executed to perform some tests:  
 ```
   > cd ./native/socket.io  
   > npm install  
@@ -18,8 +18,17 @@ Issues
 
 Notes
 ---
+  - content scripts are injected into pages viewed in a tab  
+  - content scripts can only access background and sidebar scripts via "One-off" messages (sendMessage/onMessage) or connection-based messaging (tabs.connect/runtime.connect)
+  - could only get bi-directional messaging working with connection-based messaging working  
+  - https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts
+
+
   - background scripts cannot access page script DOM
   - page scripts cannot access background script DOM
+
+  - test: //connection-based messaging with content script
+  --  src: background/background/js, lib/content.js, sidebar/sidebar.js
 
   - test: //socket.io native app communications  
   -- src: ./browser_action/*, ./native/socket.io/*  
