@@ -20,13 +20,13 @@ Notes
 ---
   - background scripts cannot access page script DOM
   - page scripts cannot access background script DOM
-  - content scripts are injected into pages viewed in a tab  
+  - content scripts are injected into HTML pages viewed in tabs
   -- content scripts can only access background and sidebar scripts via "One-off" messages (sendMessage/onMessage) or connection-based messaging (tabs.connect/runtime.connect)  
-  -- could only get bi-directional messaging working with connection-based messaging working  
+  -- could only get bi-directional messaging working with connection-based messaging working  (requires page refresh after extension loaded)  
   -- https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts  
   
 
-  - test: //connection-based messaging with content script
+  - test: //connection-based messaging with content script  
   --  src: background/background/js, lib/content.js, sidebar/sidebar.js
 
   - test: //socket.io native app communications  
